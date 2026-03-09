@@ -19,7 +19,6 @@ Example.
     "latest_breach": {
          "name": "LinkedIn",
          "breach_date": "2012-05-05",
-         "records_exposed": 164611595,
          "data_exposed": [ "Email addresses", "Passwords" ]
 }
 }
