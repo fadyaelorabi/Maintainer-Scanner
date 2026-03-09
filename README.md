@@ -48,9 +48,6 @@ Detection method.
 
 Check `_npmUser` of the version and verify that the npm account still exists.
 
-Reference.
-
-https://socket.dev/alerts/missingAuthor
 
 Output.
 
@@ -100,7 +97,7 @@ If the domain expires an attacker can buy it and receive password reset emails.
 
 Reference.
 
-https://www.usenix.org/system/files/sec21fall-liu-yuxing.pdf
+https://arxiv.org/pdf/2112.10165
 
 Output.
 
@@ -121,7 +118,7 @@ npm registry metadata.
 
 Reference.
 
-https://docs.npmjs.com/deprecating-and-undeprecating-packages-or-package-versions
+https://arxiv.org/pdf/2112.10165
 
 Output.
 
@@ -136,13 +133,13 @@ Detects long inactivity in the package release history.
 
 Typical heuristic.
 
-No new release for more than 12 to 24 months.
+No new release for more than 24 months.
 
 Abandoned packages are common targets for takeover attacks.
 
 Reference.
 
-https://snyk.io/blog/npm-security-best-practices/
+https://arxiv.org/pdf/2112.10165
 
 Output.
 
