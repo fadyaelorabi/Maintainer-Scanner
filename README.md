@@ -32,7 +32,7 @@ The signals help downstream risk engines evaluate package safety.
 
 Reference.
 
-https://socket.dev/blog/supply-chain-attacks-in-npm
+https://arxiv.org/pdf/2112.10165
 
 ## Signals
 
