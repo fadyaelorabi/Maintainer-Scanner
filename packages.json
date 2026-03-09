@@ -1,0 +1,16 @@
+[
+ { "name":"express","version":"4.18.2" },
+ { "name":"lodash","version":"4.17.21" },
+ { "name":"event-stream","version":"4.0.1" },
+ { "name": "abab", "version": "2.0.6" },
+ { "name": "popper.js", "version": "1.16.1" },
+ { "name": "stable", "version": "0.1.8" },
+ { "name": "@babel/plugin-proposal-class-properties", "version": "7.18.6" },
+ { "name": "@babel/plugin-proposal-export-namespace-from", "version": "7.18.9" },
+ { "name": "@babel/plugin-proposal-nullish-coalescing-operator", "version": "7.18.6" },
+ { "name": "@babel/plugin-proposal-numeric-separator", "version": "7.18.6" },
+ { "name": "@babel/plugin-proposal-object-rest-spread", "version": "7.20.7" },
+ { "name": "@babel/plugin-proposal-optional-chaining", "version": "7.21.0" },
+ {"name":"graphql-stream","version":"0.0.1"}
+
+]
