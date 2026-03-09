@@ -76,3 +76,7 @@ https://docs.npmjs.com/cli/v10/using-npm/registry
 
 Have I Been Pwned breach API
 https://haveibeenpwned.com/API/v3
+
+What are Weak Links in the npm Supply Chain?
+https://arxiv.org/pdf/2112.10165
+
