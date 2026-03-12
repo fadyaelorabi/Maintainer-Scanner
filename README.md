@@ -284,3 +284,101 @@ The API returns a structured security analysis for the specified package version
 
 MIT
 
+# Setup
+
+Clone the repository from GitHub.
+
+```
+git clone https://github.com/fadyaelorabi/Maintainer-Scanner.git
+cd Maintainer-Scanner
+```
+
+Create a virtual environment.
+
+```
+python -m venv venv
+```
+
+Activate the virtual environment.
+
+Windows.
+
+```
+venv\Scripts\activate
+```
+
+Install project dependencies.
+
+If a requirements file exists.
+
+```
+pip install -r requirements.txt
+```
+
+If not, install the required libraries manually.
+
+```
+pip install fastapi uvicorn requests python-dotenv
+```
+
+---
+
+# Environment Variables
+
+The scanner requires API keys for external services.
+
+Set the following environment variables.
+
+Windows.
+
+```
+set HIBP_API_KEY=your_hibp_api_key
+set RAPIDAPI_KEY=your_rapidapi_key
+```
+
+HIBP API reference.
+https://haveibeenpwned.com/API/v3
+
+RapidAPI WHOIS service.
+https://rapidapi.com/logicbuilder/api/whois-lookup10
+
+---
+
+# Running the API
+
+Start the FastAPI server.
+
+```
+uvicorn api:app --reload
+```
+
+Alternative method.
+
+```
+python -m uvicorn api:app --reload
+```
+
+The API server will start at.
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+# Testing the API
+
+Open the interactive API documentation.
+
+```
+http://127.0.0.1:8000/docs
+```
+
+Example request.
+
+```
+/scan?package=express&version=4.18.2
+```
+
+The API returns a structured JSON report containing maintainer risk signals and breach information.
+
