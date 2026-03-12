@@ -336,13 +336,6 @@ set HIBP_API_KEY=your_hibp_api_key
 set RAPIDAPI_KEY=your_rapidapi_key
 ```
 
-HIBP API reference.
-https://haveibeenpwned.com/API/v3
-
-RapidAPI WHOIS service.
-https://rapidapi.com/logicbuilder/api/whois-lookup10
-
----
 
 # Running the API
 
