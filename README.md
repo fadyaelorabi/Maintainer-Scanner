@@ -364,13 +364,7 @@ http://127.0.0.1:8000
 Open the interactive API documentation.
 
 ```
-http://127.0.0.1:8000/docs
-```
-
-Example request.
-
-```
-/scan?package=express&version=4.18.2
+http://localhost:8000/scan
 ```
 
 The API returns a structured JSON report containing maintainer risk signals and breach information.
