@@ -4,6 +4,13 @@ from datetime import datetime
 
 API_KEY = os.getenv("HIBP_API_KEY")
 
+HIJACK_DATA = {
+    "passwords",
+    "auth tokens",
+    "api keys",
+    "credential pairs"
+}
+
 
 def check_breach(email):
 
@@ -32,15 +39,29 @@ def check_breach(email):
 
         breaches = r.json()
 
+        credential_breaches = []
+
+        for b in breaches:
+
+            exposed = [d.lower() for d in b["DataClasses"]]
+
+            if any(d in HIJACK_DATA for d in exposed):
+                credential_breaches.append(b)
+
+        if not credential_breaches:
+            return {
+                "breached": 0,
+                "latest_breach": None
+            }
+
         latest = max(
-            breaches,
+            credential_breaches,
             key=lambda b: datetime.strptime(b["BreachDate"], "%Y-%m-%d")
         )
 
         latest_breach = {
             "name": latest["Name"],
             "breach_date": latest["BreachDate"],
-            "records_exposed": latest["PwnCount"],
             "data_exposed": latest["DataClasses"]
         }
 
