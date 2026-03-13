@@ -1,45 +1,8 @@
-# Maintainer Scanner
+# Full API Response Structure
 
-Maintainer Scanner analyzes npm packages and extracts maintainer related security signals that indicate potential supply chain risk.
+The API returns a structured JSON object describing the analyzed package version and detected maintainer risk signals.
 
-The system focuses on maintainer identity, account security, and package maintenance status.
-
-The scanner queries the npm registry and external breach intelligence sources to identify indicators that may lead to package compromise.
-
----
-
-# Purpose
-
-Many software supply chain attacks originate from compromised maintainer accounts.
-
-Attack scenarios commonly include.
-
-• attacker gains access to maintainer credentials
-• attacker publishes a malicious version
-• downstream projects install the compromised package
-
-The scanner identifies early indicators that increase the probability of maintainer compromise.
-
-Examples.
-
-• new maintainers appearing in the release history
-• maintainer emails exposed in credential breaches
-• abandoned or deprecated packages
-• expired maintainer email domains
-
----
-
-# Architecture
-
-Pipeline.
-
-```
-npm registry → package metadata → signal detectors → structured output signals.
-```
-
-The scanner evaluates a specific package version and returns structured signals.
-
-Example result.
+Example response.
 
 ```
 {
@@ -48,17 +11,87 @@ Example result.
   "signals": {
     "missing_author": {
       "value": 0,
-      "description": "...",
-      "risk": "..."
+      "description": "The npm account that published this version no longer exists",
+      "risk": "No accountable maintainer remains responsible for security fixes or updates"
     },
     "new_author": {
       "value": 1,
-      "description": "...",
-      "risk": "..."
+      "description": "A maintainer appears in this version that was not present in earlier releases",
+      "risk": "New maintainers may gain publish access and introduce malicious code"
+    },
+    "expired_domain": {
+      "value": 0,
+      "description": "The maintainer email domain is no longer registered",
+      "risk": "Attackers can register expired domains and intercept password reset emails"
+    },
+    "deprecated": {
+      "value": 1,
+      "description": "The package or version is marked as deprecated in the npm registry",
+      "risk": "Deprecated packages may stop receiving security updates"
+    },
+    "unmaintained": {
+      "value": 0,
+      "description": "The package has not received updates for a long period",
+      "risk": "Unmaintained packages are common takeover targets"
+    },
+    "breached_maintainer": {
+      "value": 0,
+      "description": "The maintainer email appears in known credential breach datasets",
+      "risk": "Leaked credentials may allow attackers to compromise maintainer accounts"
     }
   },
   "latest_breach": null
 }
+```
+
+Field explanation.
+
+package
+Name of the analyzed npm package.
+
+version
+Specific package version analyzed by the scanner.
+
+signals
+Security indicators related to maintainer identity and account safety.
+
+Each signal contains.
+
+value
+Binary detection result.
+
+```
+0 = condition not detected
+1 = condition detected
+```
+
+description
+Explanation of what the signal represents.
+
+risk
+Security impact associated with the detected condition.
+
+latest_breach
+Details of the most recent credential exposing breach affecting the maintainer email.
+
+Example when a breach exists.
+
+```
+"latest_breach": {
+  "name": "LinkedIn",
+  "breach_date": "2012-05-05",
+  "data_exposed": [
+    "Email addresses",
+    "Passwords"
+  ]
+}
+```
+
+If no credential related breach exists.
+
+```
+"latest_breach": null
+
 ```
 
 Signal values.
