@@ -313,10 +313,6 @@ The API returns a structured security analysis for the specified package version
 
 ---
 
-# License
-
-MIT
-
 # Setup
 
 Clone the repository from GitHub.
