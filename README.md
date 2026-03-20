@@ -36,7 +36,7 @@ Example response.
     },
     "breached_maintainer": {
       "value": 0,
-      "description": "The maintainer email appears in known credential breach datasets",
+      "description": "The maintainer credentials appears in known credential breach datasets",
       "risk": "Leaked credentials may allow attackers to compromise maintainer accounts"
     }
   },
