@@ -15,7 +15,7 @@ HIJACK_DATA = {
 }
 
 
-def calculate_breach_severity(breach_date, package_abandoned=False):
+def calculate_breach_severity(breach_date):
     breach_dt = datetime.strptime(breach_date, "%Y-%m-%d")
     now = datetime.utcnow()
 
@@ -35,12 +35,8 @@ def calculate_breach_severity(breach_date, package_abandoned=False):
         breach_age_weight = "Low"
 
     else:
-        if package_abandoned:
-            severity_level = "Medium"
-            breach_age_weight = "Very low, but raised because package is abandoned"
-        else:
-            severity_level = "Very Low"
-            breach_age_weight = "Very low"
+        severity_level = "Very Low"
+        breach_age_weight = "Very low"
 
     return {
         "breach_age_days": age_days,
@@ -50,7 +46,7 @@ def calculate_breach_severity(breach_date, package_abandoned=False):
     }
 
 
-def check_breach(email, package_abandoned=False):
+def check_breach(email):
     API_KEY = os.getenv("HIBP_API_KEY")
 
     if not API_KEY:
@@ -118,10 +114,7 @@ def check_breach(email, package_abandoned=False):
             key=lambda b: datetime.strptime(b["BreachDate"], "%Y-%m-%d")
         )
 
-        severity = calculate_breach_severity(
-            latest["BreachDate"],
-            package_abandoned=package_abandoned
-        )
+        severity = calculate_breach_severity(latest["BreachDate"])
 
         latest_breach = {
             "name": latest["Name"],
