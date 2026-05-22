@@ -1,17 +1,22 @@
-def detect_new_author(timeline):
+def detect_new_author(timeline, version_data):
 
     seen = set()
 
+    current_author = version_data.get("_npmUser", {}).get("name")
+
     for v in timeline:
 
-        if "_npmUser" not in v:
-            continue
+        # stop when we reach current version
+        if v["version"] == version_data["version"]:
+            break
 
-        author = v["_npmUser"]["name"]
+        if "_npmUser" in v:
+            seen.add(v["_npmUser"]["name"])
 
-        if author not in seen and len(seen) > 0:
-            return 1
+    #print("Current author:", current_author)
+    #print("Previous authors:", seen)
 
-        seen.add(author)
+    if current_author and current_author not in seen:
+        return 1
 
     return 0
