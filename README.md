@@ -35,8 +35,8 @@ The API returns a structured JSON report for the selected package and version.
     },
     "deprecated": {
       "value": 1,
-      "description": "The package or version is marked as deprecated in the npm registry",
-      "risk": "Deprecated packages often stop receiving security updates",
+      "description": "The version is marked as deprecated in the npm registry",
+      "risk": "Deprecated versions are unsupported and may contain unpatched vulnerabilities",
       "severity_level": "Low"
     },
     "unmaintained": {
