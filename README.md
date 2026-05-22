@@ -176,7 +176,6 @@ Its severity is calculated from the age of the most recent credential exposing b
 | 2 to 3 years | Medium |
 | 4 to 7 years | Low |
 | More than 7 years | Very Low |
-| More than 7 years and package is abandoned | Raised severity |
 
 Example:
 
