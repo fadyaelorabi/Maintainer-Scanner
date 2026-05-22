@@ -1,5 +1,7 @@
 import requests
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 RAPID_API_KEY = os.getenv("X-RapidAPI-Key")
 
