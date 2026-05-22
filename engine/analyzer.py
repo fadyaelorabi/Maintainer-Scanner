@@ -24,8 +24,8 @@ SIGNAL_INFO = {
         "severity_level": "High"
     },
     "deprecated": {
-        "description": "The package or version is marked as deprecated in the npm registry",
-        "risk": "Deprecated packages often stop receiving security updates",
+        "description": "The package version is marked as deprecated in the npm registry",
+        "risk": "Deprecated versions are unsupported and may contain unpatched vulnerabilities",
         "severity_level": "Medium"
     },
     "unmaintained": {
