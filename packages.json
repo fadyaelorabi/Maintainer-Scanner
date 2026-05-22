@@ -11,6 +11,6 @@
  { "name": "@babel/plugin-proposal-numeric-separator", "version": "7.18.6" },
  { "name": "@babel/plugin-proposal-object-rest-spread", "version": "7.20.7" },
  { "name": "@babel/plugin-proposal-optional-chaining", "version": "7.21.0" },
- {"name":"graphql-stream","version":"0.0.1"}
-
+ {"name":"graphql-stream","version":"0.0.1"},
+ {"name":"axios","version":"1.11.0"}
 ]
