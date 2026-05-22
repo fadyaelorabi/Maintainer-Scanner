@@ -6,9 +6,9 @@ def check_missing_author(version):
         print("Missing author")
         return 0
 
-    #username = version["_npmUser"]["name"]
+    username = version["_npmUser"]["name"]
 
-    print("Username: ", username)
+    #print("Username: ", username)
 
     url = f"https://www.npmjs.com/~{username}"
     #print(url)
