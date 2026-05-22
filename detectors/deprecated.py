@@ -1,8 +1,10 @@
-def detect_deprecated(versions):
+def detect_deprecated(version_data):
+    if not version_data:
+        return 0
 
-    for v in versions.values():
+    message = version_data.get("deprecated")
 
-        if "deprecated" in v:
-            return 1
+    if message:
+        return 1
 
     return 0
