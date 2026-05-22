@@ -38,15 +38,18 @@ SIGNAL_INFO = {
 def analyze_package(name, version, pkg):
 
     version_data = get_version(pkg, version)
+    #print("version_data :", version_data)
 
     timeline = list(pkg["versions"].values())
 
     email = version_data["_npmUser"]["email"] if "_npmUser" in version_data else None
+    print("email :")
+    print(email)
 
     raw_signals = {}
 
     raw_signals["missing_author"] = check_missing_author(version_data)
-    raw_signals["new_author"] = detect_new_author(timeline)
+    raw_signals["new_author"] = detect_new_author(timeline,version_data)
     raw_signals["expired_domain"] = expired_domain(email)
     raw_signals["deprecated"] = detect_deprecated(pkg["versions"])
     raw_signals["unmaintained"] = detect_unmaintained(pkg["time"])
