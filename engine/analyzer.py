@@ -67,7 +67,7 @@ def analyze_package(name, version, pkg):
     raw_signals["missing_author"] = check_missing_author(version_data)
     raw_signals["new_author"] = detect_new_author(timeline, version_data)
     raw_signals["expired_domain"] = expired_domain(email)
-    raw_signals["deprecated"] = detect_deprecated(pkg["versions"])
+    raw_signals["deprecated"] = detect_deprecated(version_data)
     raw_signals["unmaintained"] = detect_unmaintained(pkg["time"])
 
     breach_info = check_breach(email)
