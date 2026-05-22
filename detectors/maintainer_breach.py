@@ -1,6 +1,8 @@
 import requests
 import os
 from datetime import datetime
+from dotenv import load_dotenv
+load_dotenv()
 
 API_KEY = os.getenv("HIBP_API_KEY")
 
@@ -9,10 +11,18 @@ HIJACK_DATA = {
     "auth tokens",
     "api keys",
     "credential pairs"
+
 }
 
 
 def check_breach(email):
+    API_KEY = os.getenv("HIBP_API_KEY")
+    
+    if not API_KEY:
+        return {
+            "breached": 0,
+            "latest_breach": None
+        }
 
     if not email:
         return {
@@ -25,12 +35,12 @@ def check_breach(email):
         "user-agent": "depscan"
     }
 
-    url = f"https://haveibeenpwned.com/api/v3/breachedaccount/{email}"
+    url = f"https://haveibeenpwned.com/api/v3/breachedaccount/{email}?truncateResponse=false"
 
     try:
 
         r = requests.get(url, headers=headers, timeout=5)
-
+    
         if r.status_code != 200:
             return {
                 "breached": 0,
