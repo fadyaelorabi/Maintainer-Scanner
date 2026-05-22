@@ -40,11 +40,14 @@ def analyze_package(name, version, pkg):
     version_data = get_version(pkg, version)
     #print("version_data :", version_data)
 
-    timeline = list(pkg["versions"].values())
+    timeline = sorted(
+    pkg["versions"].values(),
+    key=lambda v: pkg["time"].get(v.get("version"), "")
+)
 
     email = version_data["_npmUser"]["email"] if "_npmUser" in version_data else None
-    print("email :")
-    print(email)
+    #print("email :")
+    #print(email)
 
     raw_signals = {}
 
