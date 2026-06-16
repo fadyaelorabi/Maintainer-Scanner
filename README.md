@@ -1,4 +1,4 @@
-# Maintainer Scanner API Documentation
+# Maintainer Scanner API Documentation [ Weak-Link Risk Analysis Engine]
 
 Maintainer Scanner analyzes an npm package version and returns maintainer risk signals related to account ownership, package maintenance, breach exposure, and takeover risk.
 
