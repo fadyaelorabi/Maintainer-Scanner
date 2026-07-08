@@ -25,7 +25,7 @@ The API returns a structured JSON report for the selected package and version.
       "value": 1,
       "description": "A maintainer appears in this version that was not present in earlier releases",
       "risk": "New maintainers may gain publish access and introduce malicious code",
-      "severity_level": "Medium"
+      "severity_level": "Low"
     },
     "expired_domain": {
       "value": 0,
